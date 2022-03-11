@@ -21,7 +21,7 @@ const Homepage = () => {
     if (userInfo) {
       history.push("/chats");
     }
-  }, [history]);
+  }, []);
 
   return (
     <Container maxW="xl" centerContent>

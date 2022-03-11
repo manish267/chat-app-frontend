@@ -14,12 +14,6 @@ const MyChats = ({ fetchAgain }) => {
 
   const toast = useToast();
 
-  useEffect(() => {
-    setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
-
-    // eslint-disable-next-line
-  }, []);
-
   const fetchChats = async () => {
     try {
       const config = {

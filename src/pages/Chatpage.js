@@ -9,8 +9,6 @@ const Chat = () => {
   const { user } = ChatState();
   const [fetchAgain, setFetchAgain] = useState(false);
 
-  useEffect(() => {}, []);
-
   return (
     <div style={{ width: "100%" }}>
       {user && <SideDrawer />}
