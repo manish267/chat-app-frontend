@@ -21,6 +21,7 @@ const Homepage = () => {
     if (userInfo) {
       history.push("/chats");
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
