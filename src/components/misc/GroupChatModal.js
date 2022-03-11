@@ -20,6 +20,7 @@ import { ChatState } from "../../context/ChatProvider";
 import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
+import { BASE_URL } from "../../env";
 
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -47,7 +48,10 @@ const GroupChatModal = ({ children }) => {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${query}`, config);
+      const { data } = await axios.get(
+        `${BASE_URL}/api/user?search=${query}`,
+        config
+      );
       console.log(data);
 
       setLoading(false);
@@ -98,7 +102,7 @@ const GroupChatModal = ({ children }) => {
       };
 
       const { data } = await axios.post(
-        "/api/chat/group",
+        `${BASE_URL}/api/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),

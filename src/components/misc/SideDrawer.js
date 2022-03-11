@@ -30,6 +30,7 @@ import UserListItem from "../UserAvatar/UserListItem";
 import { getSender } from "../../config/ChatLogics";
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
+import { BASE_URL } from "../../env";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -75,7 +76,10 @@ const SideDrawer = () => {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(
+        `${BASE_URL}/api/user?search=${search}`,
+        config
+      );
 
       setLoading(false);
       setSearchResult(data);
@@ -103,7 +107,11 @@ const SideDrawer = () => {
         },
       };
 
-      const { data } = await axios.post("/api/chat", { userId }, config);
+      const { data } = await axios.post(
+        `${BASE_URL}/api/chat`,
+        { userId },
+        config
+      );
 
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
 
