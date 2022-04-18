@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { BASE_URL } from "./../../env";
+import { ChatState } from "../../context/ChatProvider";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -18,6 +19,8 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
+
+  const { setUser } = ChatState();
 
   const handleClick = () => setShow(!show);
 
@@ -70,9 +73,10 @@ const Signup = () => {
       });
 
       localStorage.setItem("userInfo", JSON.stringify(data));
+      setUser(data);
       setLoading(false);
 
-      history.push("/chat");
+      history.push("/chats");
     } catch (error) {
       toast({
         title: "Error Occured",
